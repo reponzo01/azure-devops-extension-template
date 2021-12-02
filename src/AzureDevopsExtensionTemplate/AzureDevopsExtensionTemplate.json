@@ -1,0 +1,25 @@
+{
+    "contributions": [
+        {
+            "id": "azure-devops-extension-template-hub",
+            "type": "ms.vss-web.hub-group",
+            "description": "Some starter code to beging Azure DevOps extension development",
+            "targets": ["ms.vss-web.project-hub-groups-collection"],
+            "properties": {
+                "name": "Extension Template",
+                "icon": {
+                    "dark": "asset://static/logo.png",
+                    "light": "asset://static/logo.png"
+                }
+            }
+        },
+        {
+            "id": "default-hub",
+            "type": "ms.vss-web.hub",
+            "targets": [".azure-devops-extension-template-hub"],
+            "properties": {
+                "uri": "dist/AzureDevopsExtensionTemplate.html"
+            }
+        }
+    ]
+}

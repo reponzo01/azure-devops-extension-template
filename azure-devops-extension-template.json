@@ -1,0 +1,37 @@
+{
+    "manifestVersion": 1,
+    "publisher": "EmanuelVargas",
+    "description": "Azure Devops Extension template to learn extension development.",
+    "categories": ["Azure Repos"],
+    "branding": {
+        "color": "rgb(34, 34, 34)",
+        "theme": "dark"
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/reponzo01/azure-devops-extension-template.git"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "logo.png"
+    },
+    "content": {
+        "details": {
+            "path": "README.md"
+        }
+    },
+    "files": [
+        {
+            "path": "static",
+            "addressable": true
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        }
+    ]
+}
