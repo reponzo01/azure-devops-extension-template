@@ -69,18 +69,8 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
     }
 
     private renderSelectedTabPage(selectedTabKey: string): JSX.Element {
-        switch (selectedTabKey) {
-            case tabBranchCreatorsKey:
-                return (
-                    <></>
-                );
-            case tabBlankTabKey:
-                return (
-                    <BlankPage />
-                );
-            default:
-                return <></>;
-        }
+        // TODO: Return the Blank Page when appropriate
+        return <></>;
     }
 
     public render(): JSX.Element {
