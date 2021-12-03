@@ -54,16 +54,8 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
     }
 
     private renderTabBar(): JSX.Element {
-        return (
-            <TabBar
-                onSelectedTabChanged={this.onSelectedTabChanged}
-                selectedTabId={selectedTabIdObservable}
-                tabSize={TabSize.Tall}
-            >
-                <Tab name={tabBranchCreatorsName} id={tabBranchCreatorsKey} />
-                <Tab name={tabBlankTabName} id={tabBlankTabKey} />
-            </TabBar>
-        );
+        // TODO: Complete this method
+        return <></>;
     }
 
     public render(): JSX.Element {
@@ -75,18 +67,7 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
                     description='This is a template to help you get started developing Azure DevOps extensions'
                 />
                 {this.renderTabBar()}
-                <Observer selectedTabId={selectedTabIdObservable}>
-                    {(props: { selectedTabId: string }) => {
-                        if (props.selectedTabId) {
-                            return (
-                                <span>
-                                    {'Content of ' + props.selectedTabId}
-                                </span>
-                            );
-                        }
-                        return <></>;
-                    }}
-                </Observer>
+                {/* // TODO: Add the contents of the tab page */}
             </Page>
         );
     }
