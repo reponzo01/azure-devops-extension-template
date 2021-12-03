@@ -10,6 +10,8 @@ import { Observer } from 'azure-devops-ui/Observer';
 import { Page } from 'azure-devops-ui/Page';
 import { Tab, TabBar, TabSize } from 'azure-devops-ui/Tabs';
 
+import BlankPage from './BlankPage';
+
 const tabBranchCreatorsKey: string = 'branch-creators';
 const tabBranchCreatorsName: string = 'Branch Creators';
 const tabBlankTabKey: string = 'blank-tab';
@@ -66,6 +68,21 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
         );
     }
 
+    private renderSelectedTabPage(): JSX.Element {
+        switch (selectedTabIdObservable.value) {
+            case tabBranchCreatorsKey:
+                return (
+                    <></>
+                );
+            case tabBlankTabKey:
+                return (
+                    <BlankPage />
+                );
+            default:
+                return <></>;
+        }
+    }
+
     public render(): JSX.Element {
         return (
             <Page className='flex-grow'>
@@ -78,11 +95,7 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
                 <Observer selectedTabId={selectedTabIdObservable}>
                     {(props: { selectedTabId: string }) => {
                         if (props.selectedTabId) {
-                            return (
-                                <span>
-                                    {'Content of ' + props.selectedTabId}
-                                </span>
-                            );
+                            return this.renderSelectedTabPage();
                         }
                         return <></>;
                     }}
