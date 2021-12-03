@@ -21,6 +21,7 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
         this.state = {};
     }
 
+    // The SDK must be initialized
     public async componentDidMount(): Promise<void> {
         await this.initializeSdk();
     }
