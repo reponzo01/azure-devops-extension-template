@@ -68,8 +68,8 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
         );
     }
 
-    private renderSelectedTabPage(): JSX.Element {
-        switch (selectedTabIdObservable.value) {
+    private renderSelectedTabPage(selectedTabKey: string): JSX.Element {
+        switch (selectedTabKey) {
             case tabBranchCreatorsKey:
                 return (
                     <></>
@@ -95,7 +95,7 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
                 <Observer selectedTabId={selectedTabIdObservable}>
                     {(props: { selectedTabId: string }) => {
                         if (props.selectedTabId) {
-                            return this.renderSelectedTabPage();
+                            return this.renderSelectedTabPage(props.selectedTabId);
                         }
                         return <></>;
                     }}
