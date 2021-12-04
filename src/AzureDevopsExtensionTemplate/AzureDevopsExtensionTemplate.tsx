@@ -11,7 +11,6 @@ import { Page } from 'azure-devops-ui/Page';
 import { Tab, TabBar, TabSize } from 'azure-devops-ui/Tabs';
 
 import BlankPage from './BlankPage';
-import BranchCreatorsPage from './BranchCreatorsPage';
 
 const tabBranchCreatorsKey: string = 'branch-creators';
 const tabBranchCreatorsName: string = 'Branch Creators';
@@ -72,12 +71,8 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
     private renderSelectedTabPage(selectedTabKey: string): JSX.Element {
         switch (selectedTabKey) {
             case tabBranchCreatorsKey:
-                return (
-                    <BranchCreatorsPage
-                        userName={this.userName}
-                        organizationName={this.organizationName}
-                    />
-                );
+                // TODO: Create the Branch Creators Page passing in the userName and organizationName as props
+                return <></>
             case tabBlankTabKey:
                 return <BlankPage />;
             default:
