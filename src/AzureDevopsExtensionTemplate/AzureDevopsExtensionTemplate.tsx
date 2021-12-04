@@ -11,6 +11,7 @@ import { Page } from 'azure-devops-ui/Page';
 import { Tab, TabBar, TabSize } from 'azure-devops-ui/Tabs';
 
 import BlankPage from './BlankPage';
+import BranchCreatorsPage from './BranchCreatorsPage';
 
 const tabBranchCreatorsKey: string = 'branch-creators';
 const tabBranchCreatorsName: string = 'Branch Creators';
@@ -72,12 +73,13 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
         switch (selectedTabKey) {
             case tabBranchCreatorsKey:
                 return (
-                    <></>
+                    <BranchCreatorsPage
+                        userName={this.userName}
+                        organizationName={this.organizationName}
+                    />
                 );
             case tabBlankTabKey:
-                return (
-                    <BlankPage />
-                );
+                return <BlankPage />;
             default:
                 return <></>;
         }
@@ -95,7 +97,9 @@ export default class AzureDevopsExtensionTemplate extends React.Component<
                 <Observer selectedTabId={selectedTabIdObservable}>
                     {(props: { selectedTabId: string }) => {
                         if (props.selectedTabId) {
-                            return this.renderSelectedTabPage(props.selectedTabId);
+                            return this.renderSelectedTabPage(
+                                props.selectedTabId
+                            );
                         }
                         return <></>;
                     }}
