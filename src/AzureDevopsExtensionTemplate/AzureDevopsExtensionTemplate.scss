@@ -4,3 +4,21 @@
 .test-style {
     color: red;
 }
+
+.master-row {
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.master-row-content {
+    padding: 8px 8px 8px 20px;
+}
+
+.master-scroll-container {
+    height: 100%;
+    width: 100%;
+}
+
+.font-size-1 {
+    font-size: 1rem;
+}
