@@ -2,9 +2,7 @@
     "manifestVersion": 1,
     "publisher": "EmanuelVargas",
     "description": "Azure Devops Extension template to learn extension development.",
-    "scopes": [
-        "vso.code"
-    ],
+    "_TODO_1": "Add scope here to access repository information",
     "categories": ["Azure Repos"],
     "branding": {
         "color": "rgb(34, 34, 34)",

@@ -44,8 +44,8 @@ export interface IBranchCreatorsPageState {
     repositoryListSelectedItemObservable: ObservableValue<GitRepository>;
 }
 
-const totalRepositoriesToProcessObservable: ObservableValue<number> =
-    new ObservableValue<number>(0);
+// TODO: Make this an Observable Number and initialize it to 0
+const totalRepositoriesToProcessObservable = 0;
 
 // Column width observables
 const nameColumnWidthObservable: ObservableValue<number> =
@@ -75,24 +75,10 @@ export default class BranchCreatorsPage extends React.Component<
         this.renderDetailPageContent = this.renderDetailPageContent.bind(this);
         this.renderRepositoryListItem =
             this.renderRepositoryListItem.bind(this);
-        this.renderNameCell = this.renderNameCell.bind(this);
-        this.renderLatestCommitCell = this.renderLatestCommitCell.bind(this);
+        // TODO: Bind renderNameCell and renderLatestCommitCell to this
 
         this.columns = [
-            {
-                id: 'name',
-                name: 'Branch',
-                onSize: this.onSize,
-                renderCell: this.renderNameCell,
-                width: nameColumnWidthObservable,
-            },
-            {
-                id: 'commit',
-                name: 'Latest Commit',
-                onSize: this.onSize,
-                renderCell: this.renderLatestCommitCell,
-                width: latestCommitColumnWidthObservable,
-            },
+            // TODO: Add columns for Branch Name and Latest Commit
             {
                 id: 'creator',
                 name: 'Branch Creator',
@@ -125,12 +111,7 @@ export default class BranchCreatorsPage extends React.Component<
         ).getProjects();
 
         let repositories: GitRepository[] = [];
-        for (const project of projects) {
-            const repos: GitRepository[] = await getClient(
-                GitRestClient
-            ).getRepositories(project.id);
-            repositories = repositories.concat(repos);
-        }
+        // TODO: For each project get the list of repositories
 
         totalRepositoriesToProcessObservable.value = repositories.length;
 
@@ -190,13 +171,7 @@ export default class BranchCreatorsPage extends React.Component<
                                 <Page>
                                     <div className='page-content page-content-top'>
                                         <Card className='bolt-table-card bolt-card-white'>
-                                            <Table
-                                                columns={this.columns}
-                                                itemProvider={
-                                                    this.state
-                                                        .repositoryBranches
-                                                }
-                                            />
+                                            {/* TODO: Drop in a Table component using our columns and the state repositoryBranches as the item provider*/}
                                         </Card>
                                     </div>
                                 </Page>
@@ -255,10 +230,7 @@ export default class BranchCreatorsPage extends React.Component<
                 tableColumn={tableColumn}
                 children={
                     <>
-                        <Icon
-                            iconName='OpenSource'
-                            className='icon-margin'
-                        ></Icon>
+                        {/* TODO: Drop in an Icon component here. Hint, the icon names are from a subset of the Office UI Fabric Icons (https://uifabricicons.azurewebsites.net/) */}
                         <u>
                             <Link
                                 key={columnIndex.toString()}
@@ -273,7 +245,7 @@ export default class BranchCreatorsPage extends React.Component<
                                 target='_blank'
                                 className='bolt-table-link bolt-table-inline-link'
                             >
-                                {branchName}
+                                {/* TODO: Show the branch name here */}
                             </Link>
                         </u>
                     </>
@@ -306,7 +278,7 @@ export default class BranchCreatorsPage extends React.Component<
                         target='_blank'
                         className='bolt-table-link bolt-table-inline-link'
                     >
-                        {tableItem.objectId.substr(0, 8)}
+                        {/* TODO: Show only the first 8 characters of the commit ID */}
                     </Link>
                 }
             ></SimpleTableCell>
@@ -326,12 +298,9 @@ export default class BranchCreatorsPage extends React.Component<
                 tableColumn={tableColumn}
                 children={
                     <>
-                        <VssPersona
-                            className='icon-margin'
-                            imageUrl={
-                                tableItem.creator._links['avatar']['href']
-                            }
-                        />
+                        {/* TODO: Find an appropriate component to display a person's identity */}
+
+                        {/* HINT: Look at the Master-detail component to see the example the following was modeled from */}
                         <div className='flex-column text-ellipsis'>
                             <Tooltip overflowOnly={true}>
                                 <div className='primary-text text-ellipsis'>
@@ -376,6 +345,8 @@ export default class BranchCreatorsPage extends React.Component<
             undefined,
             undefined
         );
+
+        // TODO: Console log repositoryBranches to inspect it
         this.setState({
             repositoryBranches: new ObservableArray<GitRef>(repositoryBranches),
         });
@@ -388,9 +359,7 @@ export default class BranchCreatorsPage extends React.Component<
     public render(): JSX.Element {
         return (
             <Observer
-                totalRepositoriesToProcess={
-                    totalRepositoriesToProcessObservable
-                }
+                // TODO: Set the appropriate property to observe. HINT: We want to know of there are any repositories to process
             >
                 {(props: { totalRepositoriesToProcess: number }) => {
                     if (props.totalRepositoriesToProcess > 0) {
